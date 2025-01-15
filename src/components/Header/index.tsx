@@ -1,13 +1,23 @@
-import { LayoutHeader, LocationCoffee } from "./styles";
+import { ButtonCartPurchase, LayoutHeader, LocationCoffee, LocationCoffeeAndButtonCartPurchase } from "./styles";
 import logoCoffeeDelivery from '../../assets/Logo.svg'
+import { MapPin, ShoppingCart } from "phosphor-react";
 
 export function Header() {
     return (
         <LayoutHeader>
+            <section>
             <img src={logoCoffeeDelivery} alt="Logo Coffee Delivery" />
-            <LocationCoffee>
-                <p>oiii</p>
-            </LocationCoffee>
+            </section>
+            <LocationCoffeeAndButtonCartPurchase>
+                <LocationCoffee>
+                    <MapPin size={22} />
+                    <p>Porto Alegre, RS</p>
+                </LocationCoffee>
+                <ButtonCartPurchase>
+                    <ShoppingCart size={22} />
+                </ButtonCartPurchase>
+            </LocationCoffeeAndButtonCartPurchase>
+
         </LayoutHeader>
 
     )
