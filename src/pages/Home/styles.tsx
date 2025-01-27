@@ -6,7 +6,9 @@ width: 100vw;
 height: 34rem;
 background: #f0bdcd;
 display: flex;
-flex-direction: column
+flex-direction: column;
+// justify-content: center;
+align-items: center
 `
 
 export const TitleImage = styled.section`
@@ -68,4 +70,14 @@ export const TitleSubtitle = styled.section`
 display: flex;
 flex-direction: column;
 gap: 1rem
+`
+
+export const SubtitleHomeMenuCoffee = styled.h1`
+font-family: "Baloo 2", serif;
+font-size: 2rem
+`
+
+export const MenuCoffee = styled.section`
+background: #009000;
+width: 70rem;
 `

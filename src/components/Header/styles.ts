@@ -5,7 +5,8 @@ display: flex;
 justify-content: space-around;
 background: #FF0000;
 height: 6.5rem;
-align-items: center
+align-items: center;
+width: 100vw
 `
 
 export const LocationCoffee = styled.div`
