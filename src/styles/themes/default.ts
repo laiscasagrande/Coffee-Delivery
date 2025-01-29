@@ -4,6 +4,8 @@ export const defaultTheme = {
     'white-100': '#FAFAFA',
     
     'black-100': '#272221',
+    'black-200': '#403937',
+    'black-300': '#574F4D',
 
     'purple-100': '#EBE5F9',
     'purple-200': '#8047F8',
@@ -12,5 +14,6 @@ export const defaultTheme = {
     'yellow-100': '#F1E9C9',
     'yellow-200' : '#C47F17',
 
-    'gray-100': '#F3F2F2'
+    'gray-100': '#F3F2F2',
+    'gray-200': '#8D8686'
   }
