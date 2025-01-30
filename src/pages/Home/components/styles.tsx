@@ -19,7 +19,7 @@ export const ImageCafé = styled.img`
 // position: relative;
 //  top: -100px; 
 // left: 68px;
-margin-top: -12rem;
+margin-top: -1.5rem;
 position: relative;
 display: flex;
 justify-content: center;
@@ -55,7 +55,11 @@ font-weight: normal;
 `
 
 export const BuyCoffee = styled.div`
-
+display: flex;
+width: 100%;
+display: flex;
+justify-content: space-between;
+margin-top: 2rem;
 `
 export const PriceCoffee = styled.p`
 display: flex;
@@ -74,4 +78,39 @@ font-family: "Baloo 2", serif;
 font-weight: 800;
 color: ${props => props.theme['black-300']};
 }
+`
+
+export const QuantityCoffee = styled.div`
+background-color: ${props => props.theme['gray-300']};
+border-radius: 6px;
+height: 2.37rem;
+width: 4.5rem;
+padding: 8px;
+display: flex;
+justify-content: space-between;
+align-items: center
+`
+
+export const ButtonCartPurchase = styled.button`
+width: 2.38rem;
+height: 2.38rem;
+background: ${(props) => props.theme['purple-400']};
+color: ${(props) => props.theme['yellow-200']};
+display: flex;
+align-items: center;
+justify-content: center;
+border: none;
+border-radius: 0.38rem;
+padding: 0;
+
+&:focus{
+outline: thin dotted;
+outline: 0px auto -webkit-focus-ring-color;
+outline-offset: 0px;
+}
+`
+
+export const DivPurchaseCoffee = styled.div`
+display: flex;
+gap: 0.5rem
 `

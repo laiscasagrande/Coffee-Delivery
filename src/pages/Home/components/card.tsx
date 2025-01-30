@@ -1,5 +1,6 @@
-import { BuyCoffee, Card, ImageCafé, PriceCoffee, SubtitleCard, TitleCard, TypeCoffee } from "./styles";
+import { ButtonCartPurchase, BuyCoffee, Card, DivPurchaseCoffee, ImageCafé, PriceCoffee, QuantityCoffee, SubtitleCard, TitleCard, TypeCoffee } from "./styles";
 import CoffeeTraditional from '../../../assets/CoffeeTraditional.svg';
+import { Minus, Plus, ShoppingCart } from "phosphor-react";
 
 export function CardCoffee() {
     return (
@@ -20,9 +21,20 @@ export function CardCoffee() {
                         R$
                     </span>
                     <span>
-                    9,90
+                        9,90
                     </span>
                 </PriceCoffee>
+                <DivPurchaseCoffee>
+                    <QuantityCoffee>
+                        <Plus />
+                        1
+                        <Minus />
+                    </QuantityCoffee>
+                    <ButtonCartPurchase>
+                        <ShoppingCart size={22} weight="fill" color="#FAFAFA" />
+                    </ButtonCartPurchase>
+                </DivPurchaseCoffee>
+
             </BuyCoffee>
         </Card>
     )
