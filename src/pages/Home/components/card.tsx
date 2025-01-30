@@ -1,19 +1,28 @@
 import { ButtonCartPurchase, BuyCoffee, Card, DivPurchaseCoffee, ImageCafé, PriceCoffee, QuantityCoffee, SubtitleCard, TitleCard, TypeCoffee } from "./styles";
-import CoffeeTraditional from '../../../assets/CoffeeTraditional.svg';
 import { Minus, Plus, ShoppingCart } from "phosphor-react";
+import { ReactNode } from "react";
 
-export function CardCoffee() {
+interface CardPropsI {
+    id: string
+    image: string
+    title: string
+    caption: string
+    price: string
+    type: string
+}
+
+export function CardCoffee({ id, image, title, caption, price, type }: CardPropsI) {
     return (
         <Card>
-            <ImageCafé src={CoffeeTraditional} alt="Café tradicional" />
+            <ImageCafé src={image} alt="Café tradicional" />
             <TypeCoffee>
-                TRADICIONAL
+                {type}
             </TypeCoffee>
             <TitleCard>
-                Expresso Tradicional
+                {title}
             </TitleCard>
             <SubtitleCard>
-                Expresso diluído, menos intenso que o tradicional
+                {caption}
             </SubtitleCard>
             <BuyCoffee>
                 <PriceCoffee>
@@ -21,7 +30,7 @@ export function CardCoffee() {
                         R$
                     </span>
                     <span>
-                        9,90
+                        {price}
                     </span>
                 </PriceCoffee>
                 <DivPurchaseCoffee>

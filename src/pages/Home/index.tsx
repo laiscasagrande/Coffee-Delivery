@@ -2,7 +2,45 @@ import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 import imageCoffee from '../../assets/ImageCoffee.svg'
 import { CirculoCarrinhoPurchase, ContainerSubtitles, ContentHome, ImageCoffee, MenuCoffee, SubtitleHome, SubtitleHomeMenuCoffee, SubtitleIcon, TitleHome, TitleImage, TitleSubtitle, TitleSubtitleHome } from './styles'
 import { CardCoffee } from './components/card'
+import CoffeeTraditional from '../../assets/CoffeeTraditional.svg';
+import CoffeeAmerican from '../../assets/CoffeeAmerican.svg';
+import CoffeeCreamy from '../../assets/CoffeeCreamy.svg';
+import ImageCoffeee from '../../assets/ImageCoffee.svg';
 export function Home() {
+    const listCards = [
+        {
+            id: '1',
+            image: CoffeeTraditional,
+            title: 'Expresso Tradicional',
+            caption: 'O tradicional café feito com água quente e grãos moídos',
+            price: '9,90',
+            type: 'Tradicional'
+        },
+        {
+            id: '2',
+            image: CoffeeAmerican,
+            title: 'Expresso Americano',
+            caption: 'Expresso diluído, menos intenso que o tradicional',
+            price: '9,90',
+            type: 'Tradicional'
+        },
+        {
+            id: '3',
+            image: CoffeeCreamy,
+            title: 'Expresso Cremoso',
+            caption: 'Café expresso tradicional com espuma cremosa',
+            price: '9,90',
+            type: 'Tradicional'
+        },
+        // {
+        //     id: '4',
+        //     image: ImageCoffeee,
+        //     title: 'Expresso Gelado',
+        //     caption: 'Bebida preparada com café expresso e cubos de gelo',
+        //     price: '9,90',
+        //     type: 'Tradicional'
+        // },
+    ]
     return (
         <>
             <ContentHome>
@@ -45,7 +83,16 @@ export function Home() {
                 <SubtitleHomeMenuCoffee>
                     Nossos Cafés
                 </SubtitleHomeMenuCoffee>
-                <CardCoffee/>
+                {listCards.map((item) => (
+                    <CardCoffee
+                    id={item.id}
+                    image={item.image}
+                    title={item.title}
+                    caption={item.caption}
+                    price={item.price}
+                    type={item.type}
+                    />
+                ))}
                 </MenuCoffee>
             </ContentHome>
 
