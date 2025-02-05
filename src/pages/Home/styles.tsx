@@ -4,17 +4,18 @@ import styled from "styled-components";
 export const ContentHome = styled.main`
 width: 100vw;
 height: 34rem;
-background: #f0bdcd;
 display: flex;
 flex-direction: column;
 // justify-content: center;
-align-items: center
+align-items: center;
+gap: 7rem
 `
 
 export const TitleImage = styled.section`
 width: 100vw;
 display: flex;
-justify-content: space-around;
+justify-content: center;
+gap: 3.5rem
 `
 
 export const TitleSubtitleHome = styled.section`
@@ -22,7 +23,6 @@ display: flex;
 flex-direction: column;
 height: 12rem;
 width: 36.75rem;
-background: #009000;
 gap: 1rem
 `
 
@@ -44,7 +44,6 @@ display: flex;
 justify-content: space-between;
 flex-wrap: wrap;
 width: 36.75rem;
-background: #A020F0;
 gap: 1.25rem
 `
 
@@ -69,7 +68,7 @@ justify-content: center;
 export const TitleSubtitle = styled.section`
 display: flex;
 flex-direction: column;
-gap: 1rem
+gap: 4rem
 `
 
 export const SubtitleHomeMenuCoffee = styled.h1`
@@ -79,6 +78,12 @@ margin-bottom: 3rem
 `
 
 export const MenuCoffee = styled.section`
-background: #009000;
 width: 70rem;
+`
+
+export const ListingCafes = styled.section`
+width: 100%;
+display: flex;
+gap: 2rem;
+flex-wrap: wrap;
 `

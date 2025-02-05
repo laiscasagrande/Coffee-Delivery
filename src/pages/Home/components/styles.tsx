@@ -25,7 +25,7 @@ display: flex;
 justify-content: center;
 `
 
-export const TypeCoffee = styled.div`
+export const TypeCoffee = styled.span`
 margin-top: 0.75rem;
 height: 1.32rem;
 width: 5.07rem;
@@ -37,6 +37,11 @@ display: flex;
 justify-content: center;
 color: ${props => props.theme['yellow-200']};
 font-weight: bold 
+`
+
+export const OrganizationCategoriesCoffees = styled.div`
+display: flex;
+gap: 4px
 `
 
 export const TitleCard = styled.h1`

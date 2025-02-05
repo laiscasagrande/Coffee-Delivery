@@ -1,6 +1,5 @@
-import { ButtonCartPurchase, BuyCoffee, Card, DivPurchaseCoffee, ImageCafé, PriceCoffee, QuantityCoffee, SubtitleCard, TitleCard, TypeCoffee } from "./styles";
+import { ButtonCartPurchase, BuyCoffee, Card, DivPurchaseCoffee, ImageCafé, OrganizationCategoriesCoffees, PriceCoffee, QuantityCoffee, SubtitleCard, TitleCard, TypeCoffee } from "./styles";
 import { Minus, Plus, ShoppingCart } from "phosphor-react";
-import { ReactNode } from "react";
 
 interface CardPropsI {
     id: string
@@ -8,16 +7,20 @@ interface CardPropsI {
     title: string
     caption: string
     price: string
-    type: string
+    type: string[]
 }
 
-export function CardCoffee({ id, image, title, caption, price, type }: CardPropsI) {
+export function CardCoffee({ image, title, caption, price, type }: CardPropsI) {
     return (
         <Card>
             <ImageCafé src={image} alt="Café tradicional" />
-            <TypeCoffee>
-                {type}
-            </TypeCoffee>
+            <OrganizationCategoriesCoffees>
+            {type.map((element, index) => (
+                <TypeCoffee key={index}>
+                    {element}
+                </TypeCoffee>
+            ))}
+            </OrganizationCategoriesCoffees>
             <TitleCard>
                 {title}
             </TitleCard>

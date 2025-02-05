@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const LayoutHeader = styled.main`
 display: flex;
 justify-content: space-around;
-background: #FF0000;
 height: 6.5rem;
 align-items: center;
 width: 100vw

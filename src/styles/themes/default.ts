@@ -2,6 +2,8 @@ export const defaultTheme = {
     // white: '#FFF',
   
     'white-100': '#FAFAFA',
+    background: '#FAFAFA',
+    'base-text': '#574F4D',
     
     'black-100': '#272221',
     'black-200': '#403937',
