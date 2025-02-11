@@ -1,6 +1,7 @@
 import { ButtonCartPurchase, LayoutHeader, LocationCoffee, LocationCoffeeAndButtonCartPurchase } from "./styles";
 import logoCoffeeDelivery from '../../assets/Logo.svg'
 import { MapPin, ShoppingCart } from "phosphor-react";
+import { NavLink } from "react-router-dom";
 
 export function Header() {
     return (
@@ -14,7 +15,9 @@ export function Header() {
                     <p>Porto Alegre, RS</p>
                 </LocationCoffee>
                 <ButtonCartPurchase>
+                    <NavLink to="/buy" title="Compra">
                     <ShoppingCart size={22} />
+                    </NavLink>
                 </ButtonCartPurchase>
             </LocationCoffeeAndButtonCartPurchase>
 
