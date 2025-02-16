@@ -50,6 +50,9 @@ color: ${(props) => props.theme['black-200']};
 export const ContainerPayment = styled.article`
 height: 13rem;
 width: 40rem;
+display: flex;
+flex-direction: column;
+gap: 2rem;
 padding: 2.5rem;
 background: ${(props) => props.theme['gray-100']};
 `;
@@ -60,7 +63,18 @@ color: ${(props) => props.theme['purple-200']};
 
 export const PaymentMethod = styled.div`
 background: ${props => props.theme['gray-300']};
+color: ${props => props.theme['black-300']};
 height: 3.19rem;
 width: 11.17rem;
-border-radius: 6px
+border-radius: 6px;
+font-size: 0.75rem;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 0.75rem;
+`
+
+export const UnityFormasPayment = styled.section`
+display: flex;
+gap: 0.75rem;
 `

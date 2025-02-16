@@ -1,5 +1,5 @@
-import { CurrencyDollar, MapPinLine } from "phosphor-react";
-import { ColumnTitleSubtitle, CompleteYourOrder, ContainerForm, ContainerPayment, Icon, IconDollar, PaymentMethod, SubtitleForm, TitleForm, TitleSubtitleForm, UnityContainer } from "./styles";
+import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "phosphor-react";
+import { ColumnTitleSubtitle, CompleteYourOrder, ContainerForm, ContainerPayment, Icon, IconDollar, PaymentMethod, SubtitleForm, TitleForm, TitleSubtitleForm, UnityContainer, UnityFormasPayment } from "./styles";
 import { FormAddress } from "./components/FormAddress";
 
 export function Buy() {
@@ -26,7 +26,7 @@ export function Buy() {
                     <FormAddress />
                 </ContainerForm>
                 <ContainerPayment>
-                <TitleSubtitleForm>
+                    <TitleSubtitleForm>
                         <IconDollar>
                             <CurrencyDollar size={24} />
                         </IconDollar>
@@ -35,19 +35,24 @@ export function Buy() {
                                 Pagamento
                             </TitleForm>
                             <SubtitleForm>
-                            O pagamento é feito na entrega. Escolha a forma que deseja pagar
+                                O pagamento é feito na entrega. Escolha a forma que deseja pagar.
                             </SubtitleForm>
                         </ColumnTitleSubtitle>
                     </TitleSubtitleForm>
-                    <PaymentMethod>
-                        CARTÃO DE CRÉDITO
-                    </PaymentMethod>
-                    <PaymentMethod>
-                        CARTÃO DE CRÉDITO
-                    </PaymentMethod>
-                    <PaymentMethod>
-                        CARTÃO DE CRÉDITO
-                    </PaymentMethod>
+                    <UnityFormasPayment>
+                        <PaymentMethod>
+                            <CreditCard size={22} color="#8047F8"/>
+                            CARTÃO DE CRÉDITO
+                        </PaymentMethod>
+                        <PaymentMethod>
+                        <Bank size={22} color="#8047F8"/>
+                            CARTÃO DE DÉBITO
+                        </PaymentMethod>
+                        <PaymentMethod>
+                        <Money size={22} color="#8047F8"/>
+                            DINHEIRO
+                        </PaymentMethod>
+                    </UnityFormasPayment>
                 </ContainerPayment>
             </UnityContainer>
         </>
