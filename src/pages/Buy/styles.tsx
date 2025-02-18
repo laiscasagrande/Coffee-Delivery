@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const UnityContainer = styled.main`
+export const MainContainer = styled.main`
+display: flex;
+`;
+
+export const UnityContainer = styled.article`
 display: flex;
 flex-direction: column;
 gap: 0.75rem;
@@ -77,4 +81,19 @@ gap: 0.75rem;
 export const UnityFormasPayment = styled.section`
 display: flex;
 gap: 0.75rem;
+`
+
+export const ContainerFinalPurchase = styled.article`
+height: 11.38rem;
+width: 28rem;
+background: ${(props) => props.theme['gray-100']};
+border-top-left-radius: 6px;
+border-top-right-radius: 44px;
+border-bottom-right-radius: 6px;
+border-bottom-left-radius: 44px;
+padding: 2.5rem;
+`
+
+export const ContainerSelectedCoffee = styled.section`
+
 `
