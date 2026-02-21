@@ -1,7 +1,21 @@
 import styled from "styled-components";
 
+export const AlignmentContainerFormEtitle = styled.section`
+display: flex;
+flex-direction: column;
+gap: 1rem;
+`
+
+export const AlignContainerInformationDeliveryTitle = styled.section`
+display: flex;
+flex-direction: column;
+gap: 1rem;
+`
+
 export const MainContainer = styled.main`
 display: flex;
+gap: 2rem;
+justify-content: center;
 `;
 
 export const UnityContainer = styled.article`
@@ -84,7 +98,7 @@ gap: 0.75rem;
 `
 
 export const ContainerFinalPurchase = styled.article`
-height: 11.38rem;
+height: 100%;
 width: 28rem;
 background: ${(props) => props.theme['gray-100']};
 border-top-left-radius: 6px;
@@ -92,8 +106,21 @@ border-top-right-radius: 44px;
 border-bottom-right-radius: 6px;
 border-bottom-left-radius: 44px;
 padding: 2.5rem;
+display: flex;
+flex-direction: column;
+gap: 1.5rem;
 `
 
 export const ContainerSelectedCoffee = styled.section`
 
+`
+
+export const ConfirmOrderButton = styled.button`
+height: 2.875rem;
+width: 23rem;
+background: ${(props) => props.theme['yellow-300']};
+color: ${(props) => props.theme['white-100']};
+border-radius: 6px;
+border-color: transparent;
+cursor: pointer;
 `

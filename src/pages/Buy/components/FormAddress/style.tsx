@@ -51,7 +51,8 @@ export const Select = styled.select`
 height: 2.62rem;
 width: 3.75rem;
 border: none;
-outline: none
+outline: none;
+border-radius: 4px;
 `
 export const Option = styled.option`
 

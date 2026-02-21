@@ -5,7 +5,6 @@ display: flex;
 height: 5rem;
 width: 23rem;
 padding: 0.25rem;
-background: #FF0000;
 justify-content: space-between;
 align-items: center;
 `
@@ -42,4 +41,44 @@ font-weight: bold;
 export const InformationCoffee = styled.div`
 display: flex;
 gap: 1.25rem
+`
+
+export const CoffeeShopDividerLine = styled.div`
+height: 1px;
+width: 100%;
+background-color: ${props => props.theme['gray-300']};
+`
+
+export const ContainerTotalItemsDelivery = styled.article`
+height: 100%;
+width: 100%;
+display: flex;
+flex-direction: column;
+gap: 12px;
+justify-content: center;
+`
+
+export const InformationPriceDelivery = styled.p`
+height: 100%;
+width: 100%;
+display: flex;
+justify-content: end
+`
+
+export const TotalsRealValues = styled.p`
+height: 100%;
+width: 100%;
+display: flex;
+justify-content: start
+`
+
+export const ParagraphAlignmentPrices = styled.div`
+width: 100%;
+display: flex;
+justify-content: space-between;
+`
+
+export const ParagraphTotal = styled.div`
+font-weight: 900;
+font-size: 20px;
 `
