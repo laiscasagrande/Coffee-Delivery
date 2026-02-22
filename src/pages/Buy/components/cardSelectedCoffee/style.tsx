@@ -50,7 +50,6 @@ background-color: ${props => props.theme['gray-300']};
 `
 
 export const ContainerTotalItemsDelivery = styled.article`
-height: 100%;
 width: 100%;
 display: flex;
 flex-direction: column;

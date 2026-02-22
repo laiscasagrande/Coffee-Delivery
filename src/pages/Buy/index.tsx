@@ -5,6 +5,7 @@ import { CardSelectedCoffee } from "./components/cardSelectedCoffee";
 import CoffeeTraditional from '../../assets/CoffeeTraditional.svg';
 import CoffeeLatte from '../../assets/CoffeeLatte.svg';
 import { ContainerTotalItemsDelivery, InformationPriceDelivery, ParagraphAlignmentPrices, ParagraphTotal, TotalsRealValues } from "./components/cardSelectedCoffee/style";
+import { NavLink } from "react-router-dom";
 
 export function Buy() {
 
@@ -107,7 +108,7 @@ export function Buy() {
                                 <ParagraphTotal>R$ 33,20</ParagraphTotal>
                             </ParagraphAlignmentPrices>
                         </ContainerTotalItemsDelivery>
-                        <ConfirmOrderButton>Confirmar Pedido</ConfirmOrderButton>
+                        <NavLink to="/orderCconfirmed" title="Confirmar Pedido"><ConfirmOrderButton>Confirmar Pedido</ConfirmOrderButton></NavLink>
                     </ContainerFinalPurchase>
                 </AlignContainerInformationDeliveryTitle>
             </MainContainer>

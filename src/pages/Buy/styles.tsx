@@ -98,7 +98,6 @@ gap: 0.75rem;
 `
 
 export const ContainerFinalPurchase = styled.article`
-height: 100%;
 width: 28rem;
 background: ${(props) => props.theme['gray-100']};
 border-top-left-radius: 6px;
