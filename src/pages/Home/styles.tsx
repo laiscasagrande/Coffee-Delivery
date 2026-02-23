@@ -1,49 +1,69 @@
 import styled from "styled-components";
 
-
 export const ContentHome = styled.main`
-width: 100vw;
-height: 34rem;
+width: 100%;
+min-height: 34rem;
 display: flex;
 flex-direction: column;
 // justify-content: center;
 align-items: center;
-gap: 7rem
-`
+gap: 7rem;
 
-export const TitleImage = styled.section`
-width: 100vw;
-display: flex;
-justify-content: center;
-gap: 3.5rem
+@media (max-width: 1280px) {
+  gap: 4rem;
+}
 `
 
 export const TitleSubtitleHome = styled.section`
-display: flex;
-flex-direction: column;
-height: 12rem;
-width: 36.75rem;
-gap: 1rem
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+`
+
+export const TitleImage = styled.section`
+  width: 100%;
+  max-width: 70rem;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+
+  @media (max-width: 768px) {
+  flex-direction: column;
+  text-align: center;
+}
+
+  @media (max-width: 1280px) {
+  padding: 0 3rem 0 3rem;
+}
 `
 
 export const ImageCoffee = styled.img`
-width: 29.75rem;
-height: 22.5rem
+  width: 100%;
+  max-width: 29.75rem;
+  height: auto;
+
+  @media (max-width: 1280px) {
+    max-width: 25rem;
+  }
 `
 
 export const TitleHome = styled.h1`
 font-family: "Baloo 2", serif;
-font-size: 3rem
+font-size: clamp(1.8rem, 4vw, 3rem);
 `
 export const SubtitleHome = styled.p`
-font-size: 1.25rem;
+font-size: clamp(0.8rem, 2vw, 1.25rem);
 `
 
 export const ContainerSubtitles = styled.section`
 display: flex;
 justify-content: space-between;
 flex-wrap: wrap;
-width: 36.75rem;
+max-width: 36.75rem;
 gap: 1.25rem
 `
 
@@ -51,7 +71,7 @@ export const SubtitleIcon = styled.div`
 display: flex;
 align-items: center;
 gap: 0.75rem;
-font-size: 1rem
+font-size: clamp(0.8rem, 2vw, 1rem);
 `
 
 export const CirculoCarrinhoPurchase = styled.div`
@@ -68,17 +88,25 @@ justify-content: center;
 export const TitleSubtitle = styled.section`
 display: flex;
 flex-direction: column;
-gap: 4rem
+gap: 4rem;
 `
 
 export const SubtitleHomeMenuCoffee = styled.h1`
 font-family: "Baloo 2", serif;
-font-size: 2rem;
+font-size: clamp(1.8rem, 4vw, 2rem);
 margin-bottom: 3rem
 `
 
 export const MenuCoffee = styled.section`
-width: 70rem;
+max-width: 70rem;
+
+@media (max-width: 768px) {
+  text-align: center;
+}
+
+@media (max-width: 1280px) {
+    padding: 3rem;
+}
 `
 
 export const ListingCafes = styled.section`
@@ -86,4 +114,8 @@ width: 100%;
 display: flex;
 gap: 2rem;
 flex-wrap: wrap;
+
+@media (max-width: 1280px) {
+  justify-content: center;
+}
 `
