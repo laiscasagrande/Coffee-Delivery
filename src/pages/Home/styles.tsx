@@ -112,8 +112,8 @@ max-width: 70rem;
 export const ListingCafes = styled.section`
 width: 100%;
 display: flex;
-gap: 2rem;
 flex-wrap: wrap;
+gap: 2rem;
 
 @media (max-width: 1280px) {
   justify-content: center;
