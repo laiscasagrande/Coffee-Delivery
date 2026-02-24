@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const Card = styled.section`
 display: flex;
-height: 5rem;
-width: 23rem;
+min-height: 5rem;
+width: 100%;
 padding: 0.25rem;
 justify-content: space-between;
 align-items: center;
@@ -23,9 +23,9 @@ font-size: 1rem
 export const QuantityCoffee = styled.div`
 background-color: ${props => props.theme['gray-300']};
 border-radius: 6px;
-height: 2.37rem;
-width: 4.5rem;
-padding: 8px;
+min-height: 2.37rem;
+max-width: 4.5rem;
+padding: 0.5rem;
 display: flex;
 justify-content: space-between;
 align-items: center
@@ -40,7 +40,8 @@ font-weight: bold;
 `
 export const InformationCoffee = styled.div`
 display: flex;
-gap: 1.25rem
+gap: 1.25rem;
+flex-wrap: wrap;
 `
 
 export const CoffeeShopDividerLine = styled.div`
@@ -53,7 +54,7 @@ export const ContainerTotalItemsDelivery = styled.article`
 width: 100%;
 display: flex;
 flex-direction: column;
-gap: 12px;
+gap: 0.75rem;
 justify-content: center;
 `
 
@@ -79,5 +80,5 @@ justify-content: space-between;
 
 export const ParagraphTotal = styled.div`
 font-weight: 900;
-font-size: 20px;
+font-size: 1.25rem;
 `

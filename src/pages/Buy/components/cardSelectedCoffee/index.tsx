@@ -1,5 +1,5 @@
 import { Minus, Plus } from "phosphor-react";
-import { AlignmentElements, Card, CoffeeShopDividerLine, ContainerTotalItemsDelivery, ImageCoffee, InformationCoffee, PriceCoffee, QuantityCoffee, TitleCaféSelected, TotalItemsDelivery } from "./style";
+import { AlignmentElements, Card, CoffeeShopDividerLine, ImageCoffee, InformationCoffee, PriceCoffee, QuantityCoffee, TitleCaféSelected} from "./style";
 
 interface CardPropsI {
     image: string
