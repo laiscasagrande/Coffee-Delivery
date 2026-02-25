@@ -23,7 +23,7 @@ export const TitleSubtitleHome = styled.section`
 
 export const TitleImage = styled.section`
   width: 100%;
-  max-width: 70rem;
+  padding: 0 6rem;
   margin: 0 auto;
 
   display: flex;
@@ -41,13 +41,9 @@ export const TitleImage = styled.section`
 }
 `
 
-export const ImageCoffee = styled.img`
-  width: 100%;
-  max-width: 29.75rem;
-  height: auto;
-
-  @media (max-width: 1280px) {
-    max-width: 25rem;
+export const ImageCoffee = styled.div`
+  img {
+    width: 100%;
   }
 `
 
@@ -60,11 +56,9 @@ font-size: clamp(0.8rem, 2vw, 1.25rem);
 `
 
 export const ContainerSubtitles = styled.section`
-display: flex;
-justify-content: space-between;
-flex-wrap: wrap;
-max-width: 36.75rem;
-gap: 1.25rem
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); //significa que terá 2 colunas, e cada uma ocupará o mesmo espaço
+  grid-gap: 20px;
 `
 
 export const SubtitleIcon = styled.div`
@@ -86,6 +80,7 @@ justify-content: center;
 `
 
 export const TitleSubtitle = styled.section`
+max-width: 38rem;
 display: flex;
 flex-direction: column;
 gap: 4rem;

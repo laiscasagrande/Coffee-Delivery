@@ -16,6 +16,7 @@ import Cuban from '../../assets/Cuban.svg';
 import Hawaiian from '../../assets/Hawaiian.svg';
 import Arabic from '../../assets/Arabic.svg';
 import Irish from '../../assets/Irish.svg';
+import { Icon } from '../../components/Icon';
 export function Home() {
     const listCards = [
         {
@@ -131,6 +132,7 @@ export function Home() {
             type: ['ESPECIAL', 'ALCOÓLICO']
         },
     ]
+
     return (
         <>
             <ContentHome>
@@ -142,49 +144,43 @@ export function Home() {
                         </TitleSubtitleHome>
                         <ContainerSubtitles>
                             <SubtitleIcon>
-                                <CirculoCarrinhoPurchase>
-                                    <ShoppingCart size={16} weight="fill" color="#FAFAFA" />
-                                </CirculoCarrinhoPurchase>
-                                <p>Compra simples e segura</p>
+                                <Icon color="yellowDark" icon={<ShoppingCart weight="fill" size={16} />} />
+                                <span>Compra simples e segura</span>
                             </SubtitleIcon>
                             <SubtitleIcon>
-                                <CirculoCarrinhoPurchase>
-                                    <Package size={16} weight="fill" color="#FAFAFA" />
-                                </CirculoCarrinhoPurchase>
-                                <p>Compra simples e segura</p>
+                                <Icon color="baseText" icon={<Package weight="fill" size={16} />} />
+                                <span>Embalagem mantém o café intacto</span>
                             </SubtitleIcon>
                             <SubtitleIcon>
-                                <CirculoCarrinhoPurchase>
-                                    <Timer size={16} weight="fill" color="#FAFAFA" />
-                                </CirculoCarrinhoPurchase>
-                                <p>Compra simples e segura</p>
+                                <Icon color="yellow" icon={<Timer weight="fill" size={16} />} />
+                                <span>Entrega rápida e rastreada</span>
                             </SubtitleIcon>
                             <SubtitleIcon>
-                                <CirculoCarrinhoPurchase>
-                                    <Coffee size={16} weight="fill" color="#FAFAFA" />
-                                </CirculoCarrinhoPurchase>
-                                <p>Compra simples e segura</p>
+                                <Icon color="purple" icon={<Coffee weight="fill" size={16} />} />
+                                <span>O café chega fresquinho até você</span>
                             </SubtitleIcon>
                         </ContainerSubtitles>
                     </TitleSubtitle>
-                    <ImageCoffee src={imageCoffee} alt="Imagem de um café" />
+                    <ImageCoffee>
+                        <img src={imageCoffee} alt="Imagem de um café" />
+                    </ImageCoffee>
                 </TitleImage>
                 <MenuCoffee>
-                <SubtitleHomeMenuCoffee>
-                    Nossos Cafés
-                </SubtitleHomeMenuCoffee>
-                <ListingCafes>
-                {listCards.map((item) => (
-                    <CardCoffee
-                    id={item.id}
-                    image={item.image}
-                    title={item.title}
-                    caption={item.caption}
-                    price={item.price}
-                    type={item.type}
-                    />
-                ))}
-                </ListingCafes>
+                    <SubtitleHomeMenuCoffee>
+                        Nossos Cafés
+                    </SubtitleHomeMenuCoffee>
+                    <ListingCafes>
+                        {listCards.map((item) => (
+                            <CardCoffee
+                                id={item.id}
+                                image={item.image}
+                                title={item.title}
+                                caption={item.caption}
+                                price={item.price}
+                                type={item.type}
+                            />
+                        ))}
+                    </ListingCafes>
                 </MenuCoffee>
             </ContentHome>
 

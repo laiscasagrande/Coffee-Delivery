@@ -52,24 +52,6 @@ export function OrderConfirmed() {
                             </span>
                         </InformationInColumn>
                     </InformationWithIcon>
-                    {/* <InformationWithIcon>
-                        <CircleIcon>
-                            <Timer size={16} weight="fill" color="#FAFAFA" />
-                        </CircleIcon>
-                        <InformationInColumn>
-                            <InformativeParagraph>Previsão de entrega</InformativeParagraph>
-                            <InformativeParagraph style={{ fontWeight: 'bold' }}>20 min - 30 min</InformativeParagraph>
-                        </InformationInColumn>
-                    </InformationWithIcon>
-                    <InformationWithIcon>
-                        <CircleIcon>
-                            <CurrencyDollar size={16} weight="fill" color="#FAFAFA" />
-                        </CircleIcon>
-                        <InformationInColumn>
-                            <InformativeParagraph>Pagamento na entrega</InformativeParagraph>
-                            <InformativeParagraph style={{ fontWeight: 'bold' }}>Cartão de Crédito</InformativeParagraph>
-                        </InformationInColumn>
-                    </InformationWithIcon> */}
                 </DeliveryAddressInformation>
             </ContainerContainingTitlesAndDeliveryInformation>
             <ImageIllustration>
