@@ -59,8 +59,12 @@ display: flex;
 flex-direction: column;
 `;
 
-export const Icon = styled.span`
+export const Icon = styled.div`
 color: ${(props) => props.theme['yellow-200']}
+height: 2rem;
+width: 2rem;
+padding: 8px;
+border-radius: 50%;
 `;
 
 export const TitleForm = styled.h2`
