@@ -2,14 +2,12 @@ import styled from "styled-components";
 
 export const AlignmentContainerFormEtitle = styled.section`
 display: flex;
-//flex: 1;
 flex-direction: column;
 gap: 1rem;
 `
 
 export const AlignContainerInformationDeliveryTitle = styled.section`
 display: flex;
-//width: 100%;
 flex: 1;
 flex-direction: column;
 gap: 1rem;
@@ -111,7 +109,7 @@ flex-wrap: wrap;
 
 export const ContainerFinalPurchase = styled.article`
 width: 100%;
-//flex: 0 0 28rem;
+min-width: 21rem;
 max-width: 28rem;
 background: ${(props) => props.theme['gray-100']};
 border-top-left-radius: 6px;
