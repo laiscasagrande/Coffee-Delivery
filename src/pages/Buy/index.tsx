@@ -6,25 +6,11 @@ import CoffeeTraditional from '../../assets/CoffeeTraditional.svg';
 import CoffeeLatte from '../../assets/CoffeeLatte.svg';
 import { ContainerTotalItemsDelivery, InformationPriceDelivery, ParagraphAlignmentPrices, ParagraphTotal, TotalsRealValues } from "./components/cardSelectedCoffee/style";
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { CoffeesContext } from "../../contexts/CoffeeContext";
 
 export function Buy() {
-
-    const listOfCoffeesToBuy = [
-        {
-            id: '1',
-            image: CoffeeTraditional,
-            title: 'Café Tradicional',
-            quantity: 1,
-            price: 9.90
-        },
-        {
-            id: '2',
-            image: CoffeeLatte,
-            title: 'Latte',
-            quantity: 1,
-            price: 19.80
-        }
-    ]
+    const coffees = useContext(CoffeesContext)
 
     return (
         <>
@@ -86,12 +72,12 @@ export function Buy() {
                         Cafés selecionados
                     </CompleteYourOrder>
                     <ContainerFinalPurchase>
-                        {listOfCoffeesToBuy.map((items) => (
+                        {coffees.map((items) => (
                             <CardSelectedCoffee
                                 image={items.image}
                                 title={items.title}
                                 quantity={items.quantity}
-                                price={items.price}
+                                price={items.quantity}
                             />
                         ))}
                         <ContainerTotalItemsDelivery>

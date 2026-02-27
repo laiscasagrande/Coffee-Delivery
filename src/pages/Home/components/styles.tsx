@@ -96,6 +96,7 @@ justify-content: center;
 border: none;
 border-radius: 0.38rem;
 padding: 0;
+cursor: pointer;
 `
 
 export const DivPurchaseCoffee = styled.div`
