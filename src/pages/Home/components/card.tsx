@@ -1,53 +1,24 @@
 import { useContext, useState } from "react";
-import { ButtonCartPurchase, BuyCoffee, Card, DivPurchaseCoffee, ImageCafé, OrganizationCategoriesCoffees, PriceCoffee, QuantityCoffee, SubtitleCard, TitleCard, TypeCoffee } from "./styles";
-import { Minus, Plus, ShoppingCart } from "phosphor-react";
+import { ButtonCartPurchase, BuyCoffee, Card, DivPurchaseCoffee, ImageCafé, OrganizationCategoriesCoffees, PriceCoffee, SubtitleCard, TitleCard, TypeCoffee } from "./styles";
+import { ShoppingCart } from "phosphor-react";
 import { CoffeesContext } from "../../../contexts/CoffeeContext";
+import { CoffeeQuantityButton } from "../../../components/CoffeeQuantityButton";
 
 interface CardPropsI {
-    id: string
+    id: number
     image: string
     title: string
     caption: string
-    price: string
+    price: number
     type: string[]
 }
 
-export function CardCoffee({ image, title, caption, price, type }: CardPropsI) {
-
-    const [counterCafes, setCounterCafes] = useState(1);
-    const [coffeeChosen, setCoffeeChosen] = useState({
-        image: image,
-        title: title,
-        price: price,
-        quantity: counterCafes
-    })
-    const coffees = useContext(CoffeesContext)
-
-    function coffeeEnhancer() {
-        setCounterCafes((updater) => updater + 1)
-    }
-
-    function decrementerCoffees() {
-        if (counterCafes < 1) {
-            return
-        }
-        setCounterCafes((updater) => updater - 1)
-    }
-
-    function handleCoffeeChosen(image: string, title: string, price: string) {
-        setCoffeeChosen({
-            ...coffeeChosen,
-            image: image,
-            title: title,
-            price: price,
-            quantity: counterCafes * parseFloat(price)
-        })
-        coffees.push(coffeeChosen)
-        console.log(coffees)
-    }
+export function CardCoffee({ id, image, title, caption, price, type }: CardPropsI) {
+    const { handleCoffeeChosen } = useContext(CoffeesContext)
+    const [quantityCoffee, setQuantityCoffe] = useState(1)
 
     return (
-        <Card>
+        <Card key={id}>
             <ImageCafé src={image} alt="Café tradicional" />
             <OrganizationCategoriesCoffees>
                 {type.map((element, index) => (
@@ -72,12 +43,12 @@ export function CardCoffee({ image, title, caption, price, type }: CardPropsI) {
                     </span>
                 </PriceCoffee>
                 <DivPurchaseCoffee>
-                    <QuantityCoffee>
-                        <Plus onClick={coffeeEnhancer} />
-                        {counterCafes}
-                        <Minus onClick={decrementerCoffees} />
-                    </QuantityCoffee>
-                    <ButtonCartPurchase onClick={() => handleCoffeeChosen(image, title, price)}>
+                    <CoffeeQuantityButton
+                        quantityCoffee={quantityCoffee}
+                        onIncrease={() => setQuantityCoffe(prev => prev + 1)}
+                        onDecrease={() => setQuantityCoffe(prev => prev > 1 ? prev - 1 : 1)}
+                    />
+                    <ButtonCartPurchase onClick={() => handleCoffeeChosen(id, image, title, price, quantityCoffee)}>
                         <ShoppingCart size={22} weight="fill" color="#FAFAFA" />
                     </ButtonCartPurchase>
                 </DivPurchaseCoffee>

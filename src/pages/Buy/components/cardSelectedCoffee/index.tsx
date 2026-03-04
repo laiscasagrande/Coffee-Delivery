@@ -1,14 +1,19 @@
-import { Minus, Plus } from "phosphor-react";
-import { AlignmentElements, Card, CoffeeShopDividerLine, ImageCoffee, InformationCoffee, PriceCoffee, QuantityCoffee, TitleCaféSelected} from "./style";
+import { AlignmentElements, Card, CoffeeShopDividerLine, ImageCoffee, InformationCoffee, PriceCoffee, TitleCaféSelected } from "./style";
+import { CoffeeQuantityButton } from "../../../../components/CoffeeQuantityButton";
+import { useContext} from "react";
+import { CoffeesContext } from "../../../../contexts/CoffeeContext";
 
 interface CardPropsI {
+    id: number
     image: string
     title: string
     quantity: number
     price: number
 }
 
-export function CardSelectedCoffee({ image, title, quantity, price }: CardPropsI) {
+export function CardSelectedCoffee({ id, image, title, quantity, price }: CardPropsI) {
+    const {increaseCoffee, decreaseCoffee} = useContext(CoffeesContext)
+
     return (
         <>
             <Card>
@@ -18,17 +23,17 @@ export function CardSelectedCoffee({ image, title, quantity, price }: CardPropsI
                         <TitleCaféSelected>
                             {title}
                         </TitleCaféSelected>
-                        <QuantityCoffee>
-                            <Plus />
-                            {quantity}
-                            <Minus />
-                        </QuantityCoffee>
+                        <CoffeeQuantityButton
+                            quantityCoffee={quantity}
+                            onIncrease={() => increaseCoffee(id)}
+                            onDecrease={() => decreaseCoffee(id)}
+                        />
 
                     </AlignmentElements>
                 </InformationCoffee>
 
                 <PriceCoffee>
-                    R$ {price}
+                    R$ {(price * quantity).toFixed(2)}
                 </PriceCoffee>
             </Card>
             <CoffeeShopDividerLine />

@@ -2,16 +2,14 @@ import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "phosphor-re
 import { AlignContainerInformationDeliveryTitle, AlignmentContainerFormEtitle, ColumnTitleSubtitle, CompleteYourOrder, ConfirmOrderButton, ContainerFinalPurchase, ContainerForm, ContainerPayment, ContainerSelectedCoffee, Icon, IconDollar, MainContainer, PaymentMethod, SubtitleForm, TitleForm, TitleSubtitleForm, UnityContainer, UnityFormasPayment } from "./styles";
 import { FormAddress } from "./components/FormAddress";
 import { CardSelectedCoffee } from "./components/cardSelectedCoffee";
-import CoffeeTraditional from '../../assets/CoffeeTraditional.svg';
-import CoffeeLatte from '../../assets/CoffeeLatte.svg';
 import { ContainerTotalItemsDelivery, InformationPriceDelivery, ParagraphAlignmentPrices, ParagraphTotal, TotalsRealValues } from "./components/cardSelectedCoffee/style";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { CoffeesContext } from "../../contexts/CoffeeContext";
 
 export function Buy() {
-    const coffees = useContext(CoffeesContext)
-
+    const {coffees} = useContext(CoffeesContext)
+    
     return (
         <>
             <MainContainer>
@@ -74,10 +72,11 @@ export function Buy() {
                     <ContainerFinalPurchase>
                         {coffees.map((items) => (
                             <CardSelectedCoffee
+                                id={items.id}
                                 image={items.image}
                                 title={items.title}
                                 quantity={items.quantity}
-                                price={items.quantity}
+                                price={items.price}
                             />
                         ))}
                         <ContainerTotalItemsDelivery>
