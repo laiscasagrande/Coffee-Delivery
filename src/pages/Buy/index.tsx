@@ -9,6 +9,10 @@ import { CoffeesContext } from "../../contexts/CoffeeContext";
 
 export function Buy() {
     const {coffees} = useContext(CoffeesContext)
+    const totalCoffeeValue = coffees.reduce((total, item) => total + (item.quantity * item.price), 0)
+    const valueDelivery = 3.50
+    const totalAmountToBePaid = (totalCoffeeValue + valueDelivery).toFixed(2)
+
     
     return (
         <>
@@ -82,15 +86,15 @@ export function Buy() {
                         <ContainerTotalItemsDelivery>
                             <ParagraphAlignmentPrices>
                                 <TotalsRealValues>Total de itens: </TotalsRealValues>
-                                <InformationPriceDelivery>R$ 29,70</InformationPriceDelivery>
+                                <InformationPriceDelivery>R$ {totalCoffeeValue.toFixed(2)}</InformationPriceDelivery>
                             </ParagraphAlignmentPrices>
                             <ParagraphAlignmentPrices>
                                 <TotalsRealValues>Entrega: </TotalsRealValues>
-                                <InformationPriceDelivery>R$ 3,50</InformationPriceDelivery>
+                                <InformationPriceDelivery>R$ {valueDelivery.toFixed(2)}</InformationPriceDelivery>
                             </ParagraphAlignmentPrices>
                             <ParagraphAlignmentPrices>
                                 <ParagraphTotal>Total: </ParagraphTotal>
-                                <ParagraphTotal>R$ 33,20</ParagraphTotal>
+                                <ParagraphTotal>R$ {totalAmountToBePaid}</ParagraphTotal>
                             </ParagraphAlignmentPrices>
                         </ContainerTotalItemsDelivery>
                         <NavLink to="/orderCconfirmed" title="Confirmar Pedido"><ConfirmOrderButton>Confirmar Pedido</ConfirmOrderButton></NavLink>
