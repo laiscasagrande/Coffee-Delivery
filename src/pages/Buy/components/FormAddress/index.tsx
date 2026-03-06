@@ -151,7 +151,6 @@ export function FormAddress() {
                     ))}
                 </Select>
             </Division>
-            <input type="submit" />
         </Form>
     )
 }
