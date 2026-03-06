@@ -1,6 +1,30 @@
+import { useContext } from "react";
 import { Division, Form, Input, Option, Select, TextArea, TextAreaCity, TextAreaComplement } from "./style";
+import { useForm, SubmitHandler } from "react-hook-form"
+import { InformationCustomerContext } from "../../../../contexts/informationCustomerCoontext";
+
+type Inputs = {
+    zipCode: string
+    road: string
+    number: number
+    complement: string
+    neighborhood: string
+    city: string
+    state: string
+}
 
 export function FormAddress() {
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<Inputs>()
+    const { setInputsForm, inputsForm } = useContext(InformationCustomerContext)
+
+    function onSubmit(data: Inputs) {
+        setInputsForm(data)
+    }
 
     const brazilianStates = [
         {
@@ -111,22 +135,23 @@ export function FormAddress() {
     ]
 
     return (
-        <Form>
-            <Input placeholder="CEP" type="number" step="1" required />
-            <TextArea placeholder="Rua" required />
+        <Form onSubmit={handleSubmit(onSubmit)}>
+            <Input placeholder="CEP" type="number" step="1" {...register("zipCode")} />
+            <TextArea placeholder="Rua" {...register("road")} />
             <Division>
-                <Input placeholder="Número" type="number" required />
-                <TextAreaComplement placeholder="Complemento" />
+                <Input placeholder="Número" type="number" {...register("number")} />
+                <TextAreaComplement placeholder="Complemento" {...register("complement")} />
             </Division>
             <Division>
-                <Input placeholder="Bairro" type="text" required />
-                <TextAreaCity />
-                <Select>
+                <Input placeholder="Bairro" type="text" {...register("neighborhood")} />
+                <TextAreaCity {...register("city")} />
+                <Select {...register("state")}>
                     {brazilianStates.map((item) => (
-                        <Option key={item.key} label={item.label}/>
+                        <Option key={item.key} label={item.label} />
                     ))}
                 </Select>
             </Division>
+            <input type="submit" />
         </Form>
     )
 }

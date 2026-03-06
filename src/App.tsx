@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { Router } from './Router'
 import { GlobalStyle } from './global'
 import { CoffeeContextProvider } from './contexts/CoffeeContext'
+import { InformationCustomerContextProvider } from './contexts/informationCustomerCoontext'
 
 function App() {
 
@@ -13,7 +14,9 @@ function App() {
       <GlobalStyle />
       <BrowserRouter>
         <CoffeeContextProvider>
-          <Router />
+          <InformationCustomerContextProvider>
+            <Router />
+          </InformationCustomerContextProvider>
         </CoffeeContextProvider>
       </BrowserRouter>
     </ThemeProvider>
