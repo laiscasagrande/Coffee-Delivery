@@ -1,19 +1,43 @@
-import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "phosphor-react";
-import { AlignContainerInformationDeliveryTitle, AlignmentContainerFormEtitle, ColumnTitleSubtitle, CompleteYourOrder, ConfirmOrderButton, ContainerFinalPurchase, ContainerForm, ContainerPayment, ContainerSelectedCoffee, Icon, IconDollar, MainContainer, PaymentMethod, SubtitleForm, TitleForm, TitleSubtitleForm, UnityContainer, UnityFormasPayment } from "./styles";
+import { MapPinLine} from "phosphor-react";
+import { AlignContainerInformationDeliveryTitle, AlignmentContainerFormEtitle, ColumnTitleSubtitle, CompleteYourOrder, ConfirmOrderButton, ContainerFinalPurchase, ContainerForm, Icon, MainContainer, SubtitleForm, TitleForm, TitleSubtitleForm, UnityContainer} from "./styles";
 import { FormAddress } from "./components/FormAddress";
 import { CardSelectedCoffee } from "./components/cardSelectedCoffee";
 import { ContainerTotalItemsDelivery, InformationPriceDelivery, ParagraphAlignmentPrices, ParagraphTotal, TotalsRealValues } from "./components/cardSelectedCoffee/style";
 import { NavLink } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CoffeesContext } from "../../contexts/CoffeeContext";
+import { PaymentMethods } from "./components/PaymentMethods";
+import { useForm } from "react-hook-form";
+import { InformationCustomerContext } from "../../contexts/informationCustomerCoontext";
+
+export type Inputs = {
+    zipCode: string
+    road: string
+    number: number
+    complement: string
+    neighborhood: string
+    city: string
+    state: string
+}
 
 export function Buy() {
-    const {coffees} = useContext(CoffeesContext)
+    const methods = useForm<Inputs>()
+    const [formPaymentButton, setFormPaymentButton] = useState('')
+    const { setInputsForm, inputsForm, setFormPayment, formPayment} = useContext(InformationCustomerContext)
+
+    function onSubmit(data: Inputs) {
+        setInputsForm(data)
+        setFormPayment(formPaymentButton)
+        console.log("inputsForm", inputsForm)
+        console.log("formPayment", formPayment)
+    }
+
+    const { coffees } = useContext(CoffeesContext)
     const totalCoffeeValue = coffees.reduce((total, item) => total + (item.quantity * item.price), 0)
     const valueDelivery = 3.50
     const totalAmountToBePaid = (totalCoffeeValue + valueDelivery).toFixed(2)
 
-    
+
     return (
         <>
             <MainContainer>
@@ -36,37 +60,9 @@ export function Buy() {
                                     </SubtitleForm>
                                 </ColumnTitleSubtitle>
                             </TitleSubtitleForm>
-                            <FormAddress />
+                            <FormAddress methods={methods}/>
                         </ContainerForm>
-                        <ContainerPayment>
-                            <TitleSubtitleForm>
-                                <IconDollar>
-                                    <CurrencyDollar size={24} />
-                                </IconDollar>
-                                <ColumnTitleSubtitle>
-                                    <TitleForm>
-                                        Pagamento
-                                    </TitleForm>
-                                    <SubtitleForm>
-                                        O pagamento é feito na entrega. Escolha a forma que deseja pagar.
-                                    </SubtitleForm>
-                                </ColumnTitleSubtitle>
-                            </TitleSubtitleForm>
-                            <UnityFormasPayment>
-                                <PaymentMethod>
-                                    <CreditCard size={22} color="#8047F8" />
-                                    CARTÃO DE CRÉDITO
-                                </PaymentMethod>
-                                <PaymentMethod>
-                                    <Bank size={22} color="#8047F8" />
-                                    CARTÃO DE DÉBITO
-                                </PaymentMethod>
-                                <PaymentMethod>
-                                    <Money size={22} color="#8047F8" />
-                                    DINHEIRO
-                                </PaymentMethod>
-                            </UnityFormasPayment>
-                        </ContainerPayment>
+                        <PaymentMethods setFormPaymentButton={setFormPaymentButton}/>
                     </UnityContainer>
                 </AlignmentContainerFormEtitle>
                 <AlignContainerInformationDeliveryTitle>
@@ -97,7 +93,7 @@ export function Buy() {
                                 <ParagraphTotal>R$ {totalAmountToBePaid}</ParagraphTotal>
                             </ParagraphAlignmentPrices>
                         </ContainerTotalItemsDelivery>
-                        <NavLink to="/orderCconfirmed" title="Confirmar Pedido"><ConfirmOrderButton>Confirmar Pedido</ConfirmOrderButton></NavLink>
+                        <NavLink to="/orderCconfirmed" title="Confirmar Pedido"><ConfirmOrderButton onClick={methods.handleSubmit(onSubmit)}>Confirmar Pedido</ConfirmOrderButton></NavLink> 
                     </ContainerFinalPurchase>
                 </AlignContainerInformationDeliveryTitle>
             </MainContainer>

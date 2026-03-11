@@ -77,40 +77,6 @@ font-size: 0.88rem;
 color: ${(props) => props.theme['black-200']};
 `;
 
-export const ContainerPayment = styled.article`
-width: 100%;
-max-width: 40rem;
-display: flex;
-flex-direction: column;
-gap: 2rem;
-padding: clamp(1rem, 3vw, 2.5rem);
-background: ${(props) => props.theme['gray-100']};
-`;
-
-export const IconDollar = styled.span`
-color: ${(props) => props.theme['purple-200']};
-`;
-
-export const PaymentMethod = styled.div`
-background: ${props => props.theme['gray-300']};
-color: ${props => props.theme['black-300']};
-flex: 1; //Se tiver um container flex com três botões, o flex: 1 pegará todo o espaço disponível e dividirá igualmente entre os três
-min-height: 3.19rem;
-padding: 0.75rem 1rem;
-border-radius: 6px;
-font-size: 0.75rem;
-display: flex;
-justify-content: center;
-align-items: center;
-gap: 0.75rem;
-`
-
-export const UnityFormasPayment = styled.section`
-display: flex;
-gap: 0.75rem;
-flex-wrap: wrap;
-`
-
 export const ContainerFinalPurchase = styled.article`
 width: 100%;
 min-width: 21rem;

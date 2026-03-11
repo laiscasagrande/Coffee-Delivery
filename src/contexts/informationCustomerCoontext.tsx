@@ -13,6 +13,9 @@ interface Inputs {
 interface informationCustomerContextType {
 inputsForm: {}
 setInputsForm: (inputs: Inputs) => void
+formPayment: string
+setFormPayment: (payment: string) => void
+
 }
 
 export const InformationCustomerContext = createContext({} as informationCustomerContextType)
@@ -24,9 +27,10 @@ interface informationCustomerContextProviderProps {
 export function InformationCustomerContextProvider({children}: informationCustomerContextProviderProps){
 
     const [inputsForm, setInputsForm] = useState({} as Inputs)
+    const [formPayment, setFormPayment] = useState('')
 
     return(
-        <InformationCustomerContext.Provider value={{setInputsForm, inputsForm}}>
+        <InformationCustomerContext.Provider value={{setInputsForm, inputsForm, formPayment, setFormPayment}}>
             {children}
         </InformationCustomerContext.Provider>
     )

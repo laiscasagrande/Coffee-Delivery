@@ -1,30 +1,13 @@
-import { useContext } from "react";
+import { UseFormReturn } from "react-hook-form";
 import { Division, Form, Input, Option, Select, TextArea, TextAreaCity, TextAreaComplement } from "./style";
-import { useForm, SubmitHandler } from "react-hook-form"
-import { InformationCustomerContext } from "../../../../contexts/informationCustomerCoontext";
+import { Inputs } from "../..";
 
-type Inputs = {
-    zipCode: string
-    road: string
-    number: number
-    complement: string
-    neighborhood: string
-    city: string
-    state: string
+interface FormAddressProps {
+  methods: UseFormReturn<Inputs>
 }
 
-export function FormAddress() {
-
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm<Inputs>()
-    const { setInputsForm, inputsForm } = useContext(InformationCustomerContext)
-
-    function onSubmit(data: Inputs) {
-        setInputsForm(data)
-    }
+export function FormAddress({ methods }: FormAddressProps) {
+    const {register} = methods
 
     const brazilianStates = [
         {
@@ -135,7 +118,7 @@ export function FormAddress() {
     ]
 
     return (
-        <Form onSubmit={handleSubmit(onSubmit)}>
+        <Form id="form-address">
             <Input placeholder="CEP" type="number" step="1" {...register("zipCode")} />
             <TextArea placeholder="Rua" {...register("road")} />
             <Division>
