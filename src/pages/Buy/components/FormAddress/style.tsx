@@ -49,7 +49,7 @@ outline: 0;
 border-radius: 4px
 `
 export const Select = styled.select`
-max-height: 2.62rem;
+height: 2.7rem;
 max-width: 3.75rem;
 border: none;
 outline: none;
@@ -57,4 +57,15 @@ border-radius: 4px;
 `
 export const Option = styled.option`
 
+`
+
+export const ErrorMessage = styled.span`
+color: ${(props) => props.theme['red-500']};
+font-size: 0.8rem;
+padding-top: 0.25rem;
+`
+
+export const DivisionColumn = styled.div`
+display: flex;
+flex-direction: column;
 `

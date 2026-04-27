@@ -55,3 +55,11 @@ export const SubtitleForm = styled.h3`
 font-size: 0.88rem;
 color: ${(props) => props.theme['black-200']};
 `;
+
+export const DivisionWithValidation = styled.div`
+display: flex;
+flex-direction: column;
+gap: 0.2rem;
+font-size: 0.8rem;
+color: ${(props) => props.theme['red-500']};
+`

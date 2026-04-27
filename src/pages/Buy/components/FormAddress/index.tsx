@@ -1,13 +1,25 @@
 import { UseFormReturn } from "react-hook-form";
-import { Division, Form, Input, Option, Select, TextArea, TextAreaComplement } from "./style";
-import { Inputs } from "../..";
+import { Division, DivisionColumn, ErrorMessage, Form, Input, Option, Select, TextArea, TextAreaComplement } from "./style";
+import zod from "zod";
 
 interface FormAddressProps {
-  methods: UseFormReturn<Inputs>
+    methods: UseFormReturn<NewformAddress>
 }
 
+const formAddressSchema = zod.object({
+    zipCode: zod.string().min(1, 'informe o CEP'),
+    road: zod.string().min(1, 'informe a rua'),
+    number: zod.string().min(1, 'informe o número'),
+    complement: zod.string().optional(),
+    neighborhood: zod.string().min(1, 'informe o bairro'),
+    city: zod.string().min(1, 'informe a cidade'),
+    state: zod.string().min(1, 'informe o estado')
+})
+
+type NewformAddress = zod.infer<typeof formAddressSchema>
+
 export function FormAddress({ methods }: FormAddressProps) {
-    const {register} = methods
+    const { register, formState: { errors } } = methods
 
     const brazilianStates = [
         {
@@ -123,20 +135,38 @@ export function FormAddress({ methods }: FormAddressProps) {
 
     return (
         <Form id="form-address">
-            <Input placeholder="CEP" type="number" step="1" {...register("zipCode")} />
-            <TextArea placeholder="Rua" {...register("road")} />
+            <DivisionColumn>
+                <Input placeholder="CEP" type="number" step="1" {...register("zipCode")} />
+                {errors.zipCode && <ErrorMessage>{errors.zipCode.message}</ErrorMessage>}
+            </DivisionColumn>
+            <DivisionColumn>
+                <TextArea placeholder="Rua" {...register("road")} />
+                {errors.road && <ErrorMessage>{errors.road.message}</ErrorMessage>}
+            </DivisionColumn>
             <Division>
-                <Input placeholder="Número" type="number" {...register("number")} />
+                <DivisionColumn>
+                    <Input placeholder="Número" type="text" {...register("number")} />
+                    {errors.number && <ErrorMessage>{errors.number.message}</ErrorMessage>}
+                </DivisionColumn>
                 <TextAreaComplement placeholder="Complemento" {...register("complement")} />
             </Division>
             <Division>
-                <Input placeholder="Bairro" type="text" {...register("neighborhood")} />
-                <Input placeholder="Cidade" {...register("city")} />
-                <Select {...register("state")}>
-                    {brazilianStates.map((item) => (
-                        <Option key={item.key} label={item.key} value={item.key !== 'UF' ? item.key : ''}/>
-                    ))}
-                </Select>
+                <DivisionColumn>
+                    <Input placeholder="Bairro" type="text" {...register("neighborhood")} />
+                    {errors.neighborhood && <ErrorMessage>{errors.neighborhood.message}</ErrorMessage>}
+                </DivisionColumn>
+                <DivisionColumn>
+                    <Input placeholder="Cidade" {...register("city")} />
+                    {errors.city && <ErrorMessage>{errors.city.message}</ErrorMessage>}
+                </DivisionColumn>
+                <DivisionColumn>
+                    <Select {...register("state")}>
+                        {brazilianStates.map((item) => (
+                            <Option key={item.key} label={item.key} value={item.key !== 'UF' ? item.key : ''} />
+                        ))}
+                    </Select>
+                    {errors.state && <ErrorMessage>{errors.state.message}</ErrorMessage>}
+                </DivisionColumn>
             </Division>
         </Form>
     )

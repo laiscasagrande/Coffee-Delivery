@@ -1,18 +1,21 @@
 import { createContext, useState } from "react"
+import zod from "zod"
 
-interface Inputs {
-    zipCode: string
-    road: string
-    number: number
-    complement: string
-    neighborhood: string
-    city: string
-    state: string
-}
+const formAddressSchema = zod.object({
+    zipCode: zod.string().min(1, 'informe o CEP'),
+    road: zod.string().min(1, 'informe a rua'),
+    number: zod.string().min(1, 'informe o número'),
+    complement: zod.string().optional(),
+    neighborhood: zod.string().min(1, 'informe o bairro'),
+    city: zod.string().min(1, 'informe a cidade'),
+    state: zod.string().min(1, 'informe o estado')
+})
+
+type NewformAddress = zod.infer<typeof formAddressSchema>
 
 interface informationCustomerContextType {
-inputsForm: Inputs
-setInputsForm: (inputs: Inputs) => void
+inputsForm: NewformAddress
+setInputsForm: (inputs: NewformAddress) => void
 formPayment: string
 setFormPayment: (payment: string) => void
 
@@ -26,7 +29,7 @@ interface informationCustomerContextProviderProps {
 
 export function InformationCustomerContextProvider({children}: informationCustomerContextProviderProps){
 
-    const [inputsForm, setInputsForm] = useState({} as Inputs)
+    const [inputsForm, setInputsForm] = useState({} as NewformAddress)
     const [formPayment, setFormPayment] = useState('')
 
     return(

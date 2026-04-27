@@ -1,5 +1,5 @@
-import { MapPinLine} from "phosphor-react";
-import { AlignContainerInformationDeliveryTitle, AlignmentContainerFormEtitle, ColumnTitleSubtitle, CompleteYourOrder, ConfirmOrderButton, ContainerFinalPurchase, ContainerForm, Icon, MainContainer, SubtitleForm, TitleForm, TitleSubtitleForm, UnityContainer} from "./styles";
+import { MapPinLine } from "phosphor-react";
+import { AlignContainerInformationDeliveryTitle, AlignmentContainerFormEtitle, ColumnTitleSubtitle, CompleteYourOrder, ConfirmOrderButton, ContainerFinalPurchase, ContainerForm, Icon, MainContainer, SubtitleForm, TitleForm, TitleSubtitleForm, UnityContainer } from "./styles";
 import { FormAddress } from "./components/FormAddress";
 import { CardSelectedCoffee } from "./components/cardSelectedCoffee";
 import { ContainerTotalItemsDelivery, InformationPriceDelivery, ParagraphAlignmentPrices, ParagraphTotal, TotalsRealValues } from "./components/cardSelectedCoffee/style";
@@ -9,29 +9,41 @@ import { CoffeesContext } from "../../contexts/CoffeeContext";
 import { PaymentMethods } from "./components/PaymentMethods";
 import { useForm } from "react-hook-form";
 import { InformationCustomerContext } from "../../contexts/informationCustomerCoontext";
+import zod from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-export type Inputs = {
-    zipCode: string
-    road: string
-    number: number
-    complement: string
-    neighborhood: string
-    city: string
-    state: string
-}
+
+const formAddressSchema = zod.object({
+    zipCode: zod.string().min(1, 'informe o CEP'),
+    road: zod.string().min(1, 'informe a rua'),
+    number: zod.string().min(1, 'informe o número'),
+    complement: zod.string().optional(),
+    neighborhood: zod.string().min(1, 'informe o bairro'),
+    city: zod.string().min(1, 'informe a cidade'),
+    state: zod.string().min(1, 'informe o estado')
+})
+
+type NewformAddress = zod.infer<typeof formAddressSchema>
 
 export function Buy() {
-    const methods = useForm<Inputs>()
+    const methods = useForm<NewformAddress>({
+        resolver: zodResolver(formAddressSchema)
+    })
     const [formPaymentButton, setFormPaymentButton] = useState('')
-    const { setInputsForm, inputsForm, setFormPayment, formPayment} = useContext(InformationCustomerContext)
+    const [hasSubmitted, setHasSubmitted] = useState(false)
+    const { setInputsForm, setFormPayment } = useContext(InformationCustomerContext)
     const navigate = useNavigate()
 
-    function onSubmit(data: Inputs) {
+    function onSubmit(data: NewformAddress) {
+        if (!formPaymentButton) {
+            return
+        }
         setInputsForm(data)
         setFormPayment(formPaymentButton)
         navigate('/orderConfirmed')
     }
 
+    const paymentError = hasSubmitted && !formPaymentButton
     const { coffees } = useContext(CoffeesContext)
     const totalCoffeeValue = coffees.reduce((total, item) => total + (item.quantity * item.price), 0)
     const valueDelivery = 3.50
@@ -60,9 +72,9 @@ export function Buy() {
                                     </SubtitleForm>
                                 </ColumnTitleSubtitle>
                             </TitleSubtitleForm>
-                            <FormAddress methods={methods}/>
+                            <FormAddress methods={methods} />
                         </ContainerForm>
-                        <PaymentMethods setFormPaymentButton={setFormPaymentButton}/>
+                        <PaymentMethods setFormPaymentButton={setFormPaymentButton} formPaymentButton={formPaymentButton} paymentError={paymentError} />
                     </UnityContainer>
                 </AlignmentContainerFormEtitle>
                 <AlignContainerInformationDeliveryTitle>
@@ -93,7 +105,9 @@ export function Buy() {
                                 <ParagraphTotal>R$ {totalAmountToBePaid}</ParagraphTotal>
                             </ParagraphAlignmentPrices>
                         </ContainerTotalItemsDelivery>
-                        <ConfirmOrderButton onClick={methods.handleSubmit(onSubmit)}>Confirmar Pedido</ConfirmOrderButton> 
+                        <form onSubmit={methods.handleSubmit(onSubmit, () => {setHasSubmitted(true)})}>
+                            <ConfirmOrderButton type="submit">Confirmar Pedido</ConfirmOrderButton>    
+                        </form>
                     </ContainerFinalPurchase>
                 </AlignContainerInformationDeliveryTitle>
             </MainContainer>
