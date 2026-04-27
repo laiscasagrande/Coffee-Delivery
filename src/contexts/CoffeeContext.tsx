@@ -37,10 +37,10 @@ export function CoffeeContextProvider({ children }: CoffeeContextProviderProps) 
     function decreaseCoffee(id: number) {
         setCoffees(prev =>
             prev.map(coffee =>
-                coffee.id === id && coffee.quantity > 1
+                coffee.id === id && coffee.quantity > 0
                     ? { ...coffee, quantity: coffee.quantity - 1 }
                     : coffee
-            )
+            ).filter(coffee => !(coffee.id === id && coffee.quantity === 0))
         )
     }
 
