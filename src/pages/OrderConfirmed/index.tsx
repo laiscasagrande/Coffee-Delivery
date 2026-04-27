@@ -25,7 +25,7 @@ export function OrderConfirmed() {
                                 </b>
                             </span>
                             <span>
-                                {inputsForm.neighborhood}
+                                {inputsForm.neighborhood} - {inputsForm.city}, {inputsForm.state}
                             </span>
                         </InformationInColumn>
                     </InformationWithIcon>

@@ -1,5 +1,5 @@
 import { UseFormReturn } from "react-hook-form";
-import { Division, Form, Input, Option, Select, TextArea, TextAreaCity, TextAreaComplement } from "./style";
+import { Division, Form, Input, Option, Select, TextArea, TextAreaComplement } from "./style";
 import { Inputs } from "../..";
 
 interface FormAddressProps {
@@ -10,6 +10,10 @@ export function FormAddress({ methods }: FormAddressProps) {
     const {register} = methods
 
     const brazilianStates = [
+        {
+            key: "UF",
+            label: ""
+        },
         {
             key: "AC",
             label: "Acre"
@@ -127,10 +131,10 @@ export function FormAddress({ methods }: FormAddressProps) {
             </Division>
             <Division>
                 <Input placeholder="Bairro" type="text" {...register("neighborhood")} />
-                <TextAreaCity {...register("city")} />
+                <Input placeholder="Cidade" {...register("city")} />
                 <Select {...register("state")}>
                     {brazilianStates.map((item) => (
-                        <Option key={item.key} label={item.label} />
+                        <Option key={item.key} label={item.key} value={item.key !== 'UF' ? item.key : ''}/>
                     ))}
                 </Select>
             </Division>
