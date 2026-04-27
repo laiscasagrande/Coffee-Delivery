@@ -2,8 +2,11 @@ import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
 import { ConfirmationTitles, ContainerContainingTitlesAndDeliveryInformation, DeliveryAddressInformation, ImageIllustration, InformationInColumn, InformationWithIcon, MainContainer, MainTitleConfirmation, SubTitleConfirmation } from "./styles";
 import Illustration from '../../assets/Illustration.svg'
 import { Icon } from "../../components/Icon";
+import { useContext } from "react";
+import { InformationCustomerContext } from "../../contexts/informationCustomerCoontext";
 
 export function OrderConfirmed() {
+    const { inputsForm, formPayment} = useContext(InformationCustomerContext)
     return (
         <MainContainer>
             <ContainerContainingTitlesAndDeliveryInformation>
@@ -18,11 +21,11 @@ export function OrderConfirmed() {
                             <span>
                                 Entrega em{" "}
                                 <b>
-                                    Rua João Daniel Martinelli, 102
+                                    {inputsForm.road}, {inputsForm.number}
                                 </b>
                             </span>
                             <span>
-                                Farrapos - Porto Alegre, RS
+                                {inputsForm.neighborhood}
                             </span>
                         </InformationInColumn>
                     </InformationWithIcon>
@@ -47,7 +50,7 @@ export function OrderConfirmed() {
                             </span>
                             <span>
                                 <b>
-                                    Cartão de Crédito
+                                    {formPayment}
                                 </b>
                             </span>
                         </InformationInColumn>

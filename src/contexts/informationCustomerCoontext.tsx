@@ -11,7 +11,7 @@ interface Inputs {
 }
 
 interface informationCustomerContextType {
-inputsForm: {}
+inputsForm: Inputs
 setInputsForm: (inputs: Inputs) => void
 formPayment: string
 setFormPayment: (payment: string) => void

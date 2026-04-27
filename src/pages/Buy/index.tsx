@@ -3,7 +3,7 @@ import { AlignContainerInformationDeliveryTitle, AlignmentContainerFormEtitle, C
 import { FormAddress } from "./components/FormAddress";
 import { CardSelectedCoffee } from "./components/cardSelectedCoffee";
 import { ContainerTotalItemsDelivery, InformationPriceDelivery, ParagraphAlignmentPrices, ParagraphTotal, TotalsRealValues } from "./components/cardSelectedCoffee/style";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { CoffeesContext } from "../../contexts/CoffeeContext";
 import { PaymentMethods } from "./components/PaymentMethods";
@@ -24,12 +24,12 @@ export function Buy() {
     const methods = useForm<Inputs>()
     const [formPaymentButton, setFormPaymentButton] = useState('')
     const { setInputsForm, inputsForm, setFormPayment, formPayment} = useContext(InformationCustomerContext)
+    const navigate = useNavigate()
 
     function onSubmit(data: Inputs) {
         setInputsForm(data)
         setFormPayment(formPaymentButton)
-        console.log("inputsForm", inputsForm)
-        console.log("formPayment", formPayment)
+        navigate('/orderConfirmed')
     }
 
     const { coffees } = useContext(CoffeesContext)
@@ -93,7 +93,7 @@ export function Buy() {
                                 <ParagraphTotal>R$ {totalAmountToBePaid}</ParagraphTotal>
                             </ParagraphAlignmentPrices>
                         </ContainerTotalItemsDelivery>
-                        <NavLink to="/orderCconfirmed" title="Confirmar Pedido"><ConfirmOrderButton onClick={methods.handleSubmit(onSubmit)}>Confirmar Pedido</ConfirmOrderButton></NavLink> 
+                        <ConfirmOrderButton onClick={methods.handleSubmit(onSubmit)}>Confirmar Pedido</ConfirmOrderButton> 
                     </ContainerFinalPurchase>
                 </AlignContainerInformationDeliveryTitle>
             </MainContainer>

@@ -23,15 +23,15 @@ export function PaymentMethods({setFormPaymentButton}: PaymentMethodsProps) {
                 </ColumnTitleSubtitle>
             </TitleSubtitleForm>
             <UnityFormasPayment>
-                <PaymentMethod onClick={() => setFormPaymentButton('credit')}>
+                <PaymentMethod onClick={() => setFormPaymentButton('Cartão de Crédito')}>
                     <CreditCard size={22} color="#8047F8" />
                     CARTÃO DE CRÉDITO
                 </PaymentMethod>
-                <PaymentMethod onClick={() => setFormPaymentButton('debit')}>
+                <PaymentMethod onClick={() => setFormPaymentButton('Cartão de Débito')}>
                     <Bank size={22} color="#8047F8" />
                     CARTÃO DE DÉBITO
                 </PaymentMethod>
-                <PaymentMethod onClick={() => setFormPaymentButton('money')}>
+                <PaymentMethod onClick={() => setFormPaymentButton('Dinheiro')}>
                     <Money size={22} color="#8047F8" />
                     DINHEIRO
                 </PaymentMethod>

@@ -47,7 +47,8 @@ display: flex;
 justify-content: center;
 align-items: center;
 gap: 0.75rem;
-border: none
+border: none;
+cursor: pointer;
 `
 
 export const SubtitleForm = styled.h3`
