@@ -1,6 +1,6 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 import imageCoffee from '../../assets/ImageCoffee.svg'
-import { CirculoCarrinhoPurchase, ContainerSubtitles, ContentHome, ImageCoffee, ListingCafes, MenuCoffee, SubtitleHome, SubtitleHomeMenuCoffee, SubtitleIcon, TitleHome, TitleImage, TitleSubtitle, TitleSubtitleHome } from './styles'
+import { ContainerSubtitles, ContentHome, ImageCoffee, ListingCafes, MenuCoffee, SubtitleHome, SubtitleHomeMenuCoffee, SubtitleIcon, TitleHome, TitleImage, TitleSubtitle, TitleSubtitleHome } from './styles'
 import { CardCoffee } from './components/card'
 import CoffeeTraditional from '../../assets/CoffeeTraditional.svg';
 import CoffeeAmerican from '../../assets/CoffeeAmerican.svg';
