@@ -18,4 +18,8 @@ font-family: 'Roboto', sans-serif;
 font-weight: 400;
 font-size: 1rem
 }
+
+html, body {
+  overflow-x: hidden;
+}
 `
